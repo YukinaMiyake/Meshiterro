@@ -4,7 +4,7 @@ class PostImage < ApplicationRecord
   belongs_to :user
   
   def get_image
-    unless image_attached?
+    unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default_image.jpg', content_type: 'image/jpeg')
     else
